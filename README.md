@@ -26,13 +26,13 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://imgur.com/a/4gxa76U' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I ran in to an issue connecting git to andriod studios so I was unable to use the built in git tools, i did however end up using just the git commands from terminal and the github desktop app to submit this assignment as i have in the past, over all designing this app was fairly easy much easier then i thought it would be.
 
 ## License
 
