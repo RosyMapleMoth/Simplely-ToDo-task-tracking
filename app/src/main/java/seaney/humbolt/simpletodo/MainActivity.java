@@ -1,6 +1,8 @@
 package seaney.humbolt.simpletodo;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> ToDoItems;
     ArrayAdapter<String> ToDoAddaptor;
     ListView LVitems;
+
+
+    public final static int EDIT_REQUEST_CODE = 20;
+    public final static String ITEM_TEXT = "itemText";
+    public final static String ITEM_TEXT_POSITION = "itemPosition";
+
+
 
 
     @Override
@@ -67,7 +76,45 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        //set up item listener
+        LVitems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // new activity
+                Intent i = new Intent(MainActivity.this, editActivity.class);
+                i.putExtra(ITEM_TEXT,ToDoItems.get(position));
+                i.putExtra(ITEM_TEXT_POSITION, position);
+
+
+                startActivityForResult(i,EDIT_REQUEST_CODE);
+            }
+        });
+
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK && requestCode == EDIT_REQUEST_CODE) {
+
+
+            String updatedItem = data.getExtras().getString(ITEM_TEXT);
+
+            int position = data.getExtras().getInt(ITEM_TEXT_POSITION);
+
+            ToDoItems.set(position, updatedItem);
+
+            ToDoAddaptor.notifyDataSetChanged();
+
+            writeItems();
+
+            Toast.makeText(this, "I hate toasts they suck", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
 
     private File getDataFile()
     {
