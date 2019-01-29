@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="add"
         android:onClick="addToDo"
+        android:text="add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -22,7 +22,8 @@
         android:id="@+id/todoLVview"
         android:layout_width="389dp"
         android:layout_height="522dp"
-        tools:layout_editor_absoluteX="15dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="14dp" />
 
     <EditText
